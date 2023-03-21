@@ -1,6 +1,6 @@
 import ExpenseItem from './ExpenseItem';
 import './Expense.css'
-import Card from './Card';
+import Card from '../UI/Card';
 const Expense =()=>{
     const expences = [
         {title:"Car Insurance" , amount: 2000 , date : new Date(2023 , 2 , 21), location :'Kolkata'},
