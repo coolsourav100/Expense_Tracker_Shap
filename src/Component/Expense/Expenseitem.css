@@ -34,11 +34,11 @@
     padding: 0.5rem;
     border-radius: 12px;
   }
-  .expense-item__delete {
+  .expense-item__change {
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #540b1d;
+    background-color: #123d18;
     border: 1px solid white;
     padding: 0.5rem;
     border-radius: 12px;
