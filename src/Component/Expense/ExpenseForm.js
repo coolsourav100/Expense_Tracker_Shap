@@ -2,57 +2,65 @@ import React, { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './ExpenseForm.css'
 
-const ExpenseForm = () => {
-    const [userInput , setUserInput] = useState({
-        enteredtitle:"",
-        enteredamount:"",
-        enteredlocation:"",
-        entereddate:""
-    })
+const ExpenseForm = (props) => {
+    // console.log(props)
+    // const [userInput , setUserInput] = useState({
+    //     enteredtitle:"",
+    //     enteredamount:"",
+    //     enteredlocation:"",
+    //     entereddate:""
+    // })
+    const [enteredtitle , setEnteredtitle] = useState('')
+    const [enteredamount , setEnteredamount] = useState('')
+    const [enteredlocation , setEnteredlocation] = useState('')
+    const [entereddate , setEntereddate] = useState('')
     const submitHandler=(e)=>{
         e.preventDefault();
-        console.log(userInput)
+        let expensedata = {
+            title:enteredtitle,
+            amount:enteredamount,
+            location:enteredlocation,
+            date:new Date(entereddate)
+        }
+        props.onSaveExpenseData(expensedata)
+        // console.log(expensedata)
+        setEnteredtitle('')
+        setEnteredamount('')
+        setEnteredlocation('')
+        setEntereddate('')
     }
     const titleHandler =(e)=>{
-        setUserInput((prevState)=>{
-            return {...prevState , enteredtitle:e.target.value}
-        })
+        setEnteredtitle(e.target.value)
     }
     const amountHandler =(e)=>{
-        setUserInput((prevState)=>{
-            return {...prevState , enteredamount:e.target.value}
-        })
+        setEnteredamount(e.target.value)
     }
     const locationHandler=(e)=>{
-        setUserInput((prevState)=>{
-            return {...prevState , enteredlocation:e.target.value}
-        })
+        setEnteredlocation(e.target.value)
     }
     const dateHandler=(e)=>{
-        setUserInput((prevState)=>{
-            return {...prevState , entereddate:e.target.value}
-        })
+        setEntereddate(e.target.value)
     }
-    console.log(userInput)   
+      
   return (
 
         <form  onSubmit={submitHandler}>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
         <label className='new-expense__control label'>Title</label>
-  <input name='title' type="text" className="'new-expense__control input"  onChange={titleHandler} />
+  <input name='title' type="text" className="'new-expense__control input" value={enteredtitle} onChange={titleHandler} />
   </div>
   <div className='new-expense__control'>
   <label className='new-expense__control label' >Amount</label>
-  <input name='amount' type='number' className="'new-expense__control input" onChange={amountHandler}/>
+  <input name='amount' type='number' className="'new-expense__control input" value={enteredamount} onChange={amountHandler}/>
   </div>
   <div className='new-expense__control'>
   <label className='new-expense__control label' >Location</label>
-  <input name="location" type='text' className="'new-expense__control input" onChange={locationHandler}/>
+  <input name="location" type='text' className="'new-expense__control input" value={enteredlocation} onChange={locationHandler}/>
   </div>
   <div className='new-expense__control'>
   <label className='new-expense__control label' >Date</label>
-  <input name='date' type='date' className="'new-expense__control input" onChange={dateHandler} min="2020-01-01" max='2024-12-31'/>
+  <input name='date' type='date' className="'new-expense__control input" value={entereddate} onChange={dateHandler} min="2020-01-01" max='2024-12-31'/>
   </div>
   <button type='submit' className="expense-item__actions">Add Expense</button>
   </div>
