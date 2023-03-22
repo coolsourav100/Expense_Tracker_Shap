@@ -43,6 +43,15 @@
     padding: 0.5rem;
     border-radius: 12px;
   }
+  .expense-item__btn {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #567405;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
+  }
   
   @media (min-width: 580px) {
     .expense-item__description {
