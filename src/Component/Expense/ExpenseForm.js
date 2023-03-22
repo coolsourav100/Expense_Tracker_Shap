@@ -3,27 +3,37 @@ import React, { useState } from 'react';
 import './ExpenseForm.css'
 
 const ExpenseForm = () => {
-    const [enteredtitle , setEnteredtitle] = useState('')
-    const [enteredamount , setEnteredamount] = useState('')
-    const [entereddate , setEntereddate] = useState('')
-    const [enteredlocation , setEnteredlocation] = useState('')
+    const [userInput , setUserInput] = useState({
+        enteredtitle:"",
+        enteredamount:"",
+        enteredlocation:"",
+        entereddate:""
+    })
     const submitHandler=(e)=>{
         e.preventDefault();
-        console.log('Submit Data')
+        console.log(userInput)
     }
     const titleHandler =(e)=>{
-        setEnteredtitle(e.target.value)
+        setUserInput((prevState)=>{
+            return {...prevState , enteredtitle:e.target.value}
+        })
     }
     const amountHandler =(e)=>{
-        setEnteredamount(e.target.value)
+        setUserInput((prevState)=>{
+            return {...prevState , enteredamount:e.target.value}
+        })
     }
     const locationHandler=(e)=>{
-        setEnteredlocation(e.target.value)
+        setUserInput((prevState)=>{
+            return {...prevState , enteredlocation:e.target.value}
+        })
     }
     const dateHandler=(e)=>{
-        setEntereddate(e.target.value)
+        setUserInput((prevState)=>{
+            return {...prevState , entereddate:e.target.value}
+        })
     }
-    console.log(enteredtitle , enteredamount , enteredlocation , entereddate)   
+    console.log(userInput)   
   return (
 
         <form  onSubmit={submitHandler}>
