@@ -9,6 +9,7 @@ const DUMMY_Expences = [
   {id:"e4",title:"Maintance" , amount: 3000 , date : new Date(2023 , 0 , 12), location :'Goa'},
 ];
 function App() {
+  
   const [expenses ,setExpenses] = useState(DUMMY_Expences)
   const addExpenseHandler=(expense)=>{
     setExpenses((prevExpenses)=>{
@@ -16,6 +17,7 @@ function App() {
     })
     console.log(expenses)
   }
+  
   return (
       
     <div>

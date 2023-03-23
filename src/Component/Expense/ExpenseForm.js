@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from '../UI/Card';
+
 import './ExpenseForm.css'
 
 const ExpenseForm = (props) => {
-    // console.log(props)
-    // const [userInput , setUserInput] = useState({
-    //     enteredtitle:"",
-    //     enteredamount:"",
-    //     enteredlocation:"",
-    //     entereddate:""
-    // })
+    const [toggle , setToggle] = useState(false)
     const [enteredtitle , setEnteredtitle] = useState('')
     const [enteredamount , setEnteredamount] = useState('')
     const [enteredlocation , setEnteredlocation] = useState('')
@@ -28,6 +23,7 @@ const ExpenseForm = (props) => {
         setEnteredamount('')
         setEnteredlocation('')
         setEntereddate('')
+        setToggle(!toggle)
     }
     const titleHandler =(e)=>{
         setEnteredtitle(e.target.value)
@@ -43,7 +39,9 @@ const ExpenseForm = (props) => {
     }
       
   return (
-
+    
+        <>
+        {toggle ? 
         <form  onSubmit={submitHandler}>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
@@ -63,8 +61,14 @@ const ExpenseForm = (props) => {
   <input name='date' type='date' className="'new-expense__control input" value={entereddate} onChange={dateHandler} min="2020-01-01" max='2024-12-31'/>
   </div>
   <button type='submit' className="expense-item__actions">Add Expense</button>
+  <button type='submit' className="expense-item__actions">cancel</button>
   </div>
         </form>
+        : <>
+            <button type='submit' className="expense-item__actions" onClick={()=>setToggle(!toggle)}>Add Expense</button>
+        </> }
+        </>
+    
     
   )
 }
