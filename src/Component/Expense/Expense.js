@@ -14,7 +14,7 @@ const Expense =({data})=>{
             <ExpensesFilter  selected={filteredYear}
             onChangeFilter={filterChangeHandler}
             />
-            {data.map((ele,index)=><ExpenseItem data={ele} key={ele.id}/>)}
+            {data.map((ele,index)=><ExpenseItem data={ele} key={ele.id} filterdata={filteredYear}/>)}
         </Card>
     )
 }
