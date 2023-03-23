@@ -8,11 +8,10 @@ const ExpenseItem = (props) => {
   console.log(props)
   return (
     <Card className="expense-item">
-      {props.filterdata==props.data.date.getFullYear() ? 
-      ( <><ExpenseDate date={props.data.date} /><ExpenseDetails
+      <ExpenseDate date={props.data.date} /><ExpenseDetails
           amount={props.data.amount}
           location={props.data.location}
-          title={props.data.title} /></> ) : null }
+          title={props.data.title} />
 
     </Card>
   );
